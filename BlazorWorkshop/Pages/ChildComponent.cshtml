@@ -1,0 +1,23 @@
+﻿<h2>Child Component</h2>
+
+<button class="btn btn-primary" onclick="@CallParentIncrementMethod">Increment</button>
+
+<button class="btn btn-secondary" onclick="@CallParentResetMethod">Reset</button>
+
+@functions {
+    [Parameter]
+    Action Increment { get; set; }
+
+    [Parameter]
+    Action Reset { get; set; }
+
+    void CallParentIncrementMethod()
+    {
+        Increment?.Invoke();
+    }
+
+    void CallParentResetMethod()
+    {
+        Reset?.Invoke();
+    }
+}

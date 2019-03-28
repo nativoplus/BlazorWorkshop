@@ -1,0 +1,23 @@
+﻿@page "/parent-child"
+
+<h1>Parent Component</h1>
+
+<p>Child event triggered: @childEventTriggerCount time@(childEventTriggerCount != 1 ? "s" : "")</p>
+
+<ChildComponent Increment="@IncrementCount" Reset="@ResetCount"></ChildComponent>
+
+@functions{
+    int childEventTriggerCount = 0;
+
+    void IncrementCount()
+    {
+        childEventTriggerCount++;
+        this.StateHasChanged();
+    }
+
+    void ResetCount()
+    {
+        childEventTriggerCount = 0;
+        this.StateHasChanged();
+    }
+}

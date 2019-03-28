@@ -1,0 +1,19 @@
+﻿@page "/top-ten"
+
+<h3>Top 10 Automobile Companies in the World</h3>
+
+<ol>
+    @foreach (var company in autoCompanies)
+    {
+        <li>@company</li>
+    }
+</ol>
+
+@functions{
+    List<string> autoCompanies { get; set; } = new List<string>
+{
+        "Toyota Motor Corporation", "Volkswagen Group",
+        "Daimler AG", "BMW", "Honda", "General Motors",
+        "Tesla Inc.", "Ford", "Nissan", "Fiat Chrysler Automobiles"
+    };
+}

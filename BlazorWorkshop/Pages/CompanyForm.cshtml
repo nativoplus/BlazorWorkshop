@@ -1,0 +1,43 @@
+﻿@page "/company-form"
+
+<h2>Automobile Company Form</h2>
+<hr />
+
+<label for="name">Your name:</label>
+<input type="text" name="name" bind-value-oninput="@name" />
+
+<br />
+
+<label for="favoriteCompany">Select your favorite company:</label>
+<select name="favoriteCompany" bind="@favoriteCompany">
+    @foreach (var company in autoCompanies)
+    {
+        <option value="@company">@company</option>
+    }
+</select>
+
+<br />
+
+<label for="promoEmails">Receive promotional emails?</label>
+<input type="checkbox" name="promoEmails" bind="@sendPromoEmails" />
+
+<br /><br />
+
+<h3>Your Information</h3>
+<hr />
+
+<p>Your name: <b>@name</b></p>
+<p>Favorite company: <b>@favoriteCompany</b></p>
+<p>Send me promotional emails: <b>@sendPromoEmails.ToString()</b></p>
+
+@functions{
+    string name { get; set; } = string.Empty;
+    bool sendPromoEmails { get; set; } = false;
+    string favoriteCompany { get; set; } = "BMW";
+    List<string> autoCompanies { get; set; } = new List<string>
+{
+        "Toyota Motor Corporation", "Volkswagen Group",
+        "Daimler AG", "BMW", "Honda", "General Motors",
+        "Tesla Inc.", "Ford", "Nissan", "Fiat Chrysler Automobiles"
+    };
+}

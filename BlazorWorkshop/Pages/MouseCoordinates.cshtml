@@ -1,0 +1,22 @@
+﻿@page "/mouse-coordinates"
+
+<h1>Mouse pointer location</h1>
+
+<p>Mouse coordinates (X, Y): @clientX, @clientY</p>
+
+<!--Without arguments-->
+<button class="btn btn-primary" onclick="@ShowMouseLocation">Without event argument</button>
+
+<!--Lambda expression with one argument-->
+<button class="btn btn-primary ml-5" onclick="@(e => ShowMouseLocation(e))">With event argument</button>
+
+@functions {
+    long clientX = 0;
+    long clientY = 0;
+
+    void ShowMouseLocation(UIMouseEventArgs eventArgs)
+    {
+        clientX = eventArgs.ClientX;
+        clientY = eventArgs.ClientY;
+    }
+}
