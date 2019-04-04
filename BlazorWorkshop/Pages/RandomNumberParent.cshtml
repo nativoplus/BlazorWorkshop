@@ -1,0 +1,15 @@
+﻿@page "/random-number-parent"
+
+<RandomNumber RandNum="randomNumber"></RandomNumber>
+<br />
+<button class="btn btn-primary" onclick="@GenerateRandomNumber">Generate number</button>
+
+@functions {
+    int randomNumber = 0;
+    Random numberGenerator = new Random();
+
+    void GenerateRandomNumber()
+    {
+        randomNumber = numberGenerator.Next(100);
+    }
+}

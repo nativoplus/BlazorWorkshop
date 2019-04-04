@@ -1,0 +1,34 @@
+﻿<style>
+    table {display: table;border-collapse: collapse;width: 100%;border-spacing: 2px;}
+    table, td, th {border: 1px solid #ddd;text-align: center;}
+</style>
+
+<table>
+    <tr>
+        <th>OnParameterSet calls</th>
+        <th>Random number</th>
+        <th>Random number with delay</th>
+    </tr>
+    <tr>
+        <td>@count</td>
+        <td>@RandNum</td>
+        <td>@randNumWithDelay</td>
+    </tr>
+</table>
+
+@functions {
+    [Parameter] int RandNum { get; set; } = 0;
+    int randNumWithDelay = 0;
+    int count = 0;
+
+    protected override void OnParametersSet()
+    {
+        count++;
+    }
+
+    protected override async Task OnParametersSetAsync()
+    {
+        await Task.Delay(1000);
+        randNumWithDelay = RandNum;
+    }
+}

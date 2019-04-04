@@ -1,0 +1,23 @@
+﻿@page "/parameter-list-parent"
+
+<h2>Parent Component</h2>
+<hr />
+
+<label for="firstName">First name: </label>
+<input type="text" name="firstName" bind="firstName" />
+<br />
+<label for="lastName">Last name: </label>
+<input type="text" name="lastName" bind="lastName" />
+<br />
+<label for="age">Age: </label>
+<input type="number" name="age" bind="age" />
+
+<br /><br />
+
+<ParameterList FirstName="@firstName" LastName="@lastName" Age="@age"></ParameterList>
+
+@functions {
+    string firstName = "Ryan";
+    string lastName = "Reynolds";
+    int age = 42;
+}

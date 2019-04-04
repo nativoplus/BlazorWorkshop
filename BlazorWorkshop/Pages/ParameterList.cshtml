@@ -1,0 +1,21 @@
+﻿<h2>Child Component</h2>
+<hr />
+
+<p><b>First name:</b> @FirstName</p>
+<p><b>Last name:</b> @LastName</p>
+<p><b>Age:</b> @Age</p>
+
+@functions {
+    [Parameter] string FirstName { get; set; }
+    [Parameter] string LastName { get; set; }
+    [Parameter] int Age { get; set; }
+
+    public override Task SetParametersAsync(ParameterCollection parameters)
+    {
+        foreach(var param in parameters)
+        {
+            Console.WriteLine($"Parameter: {param.Name}, Value: {param.Value.ToString()}");
+        }
+        return base.SetParametersAsync(parameters);
+    }
+}

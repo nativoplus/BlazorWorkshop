@@ -1,0 +1,31 @@
+﻿@page "/title-change"
+
+<h1>@Title</h1>
+
+<p>Button click count: @count</p>
+
+<button class="btn btn-primary" onclick="@ButtonClicked">Click me</button>
+
+@functions {
+    [Parameter] string Title { get; set; } = string.Empty;
+
+    int count = 0;
+
+    void ButtonClicked()
+    {
+        Title = "Button was clicked!";
+        count++;
+    }
+
+    protected override void OnInit()
+    {
+        if (string.IsNullOrEmpty(Title))
+            Title = "Title parameter is empty";
+    }
+
+    protected override async Task OnInitAsync()
+    {
+        await Task.Delay(3000);
+        Title = "Updated by OnInitAsync";
+    }
+}

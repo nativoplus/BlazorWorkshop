@@ -1,0 +1,24 @@
+﻿@page "/micro-modal"
+@inject IJSRuntime JSRuntime;
+
+<h2>Micro Modal</h2>
+
+<h4>Let's see our micromodal in action!</h4>
+
+<button class="btn btn-secondary btn-lg" data-micromodal-trigger="modal-1">Open modal</button>
+
+@functions {
+    int count = 0;
+
+    protected override void OnAfterRender()
+    {
+        count++;
+        Console.WriteLine($"OnAfterRender execution count: {count}");
+    }
+
+    protected override async Task OnAfterRenderAsync()
+    {
+        // Initialize JavaScript library
+        await JSRuntime.InvokeAsync<bool>("JsFunctions.initializeModal", "Modal has been initialized successfully.");
+    }
+}

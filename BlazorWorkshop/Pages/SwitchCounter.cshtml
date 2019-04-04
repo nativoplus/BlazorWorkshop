@@ -1,0 +1,35 @@
+﻿@page "/switch-counter"
+
+<div class="text-center">
+    <h1 class="display-1">@count</h1>
+
+    <button class="btn btn-primary" onclick="@IncrementCounter">Increment</button>
+    <br /><br />
+    <button class="btn btn-success" onclick="@TurnOn">Turn On</button>
+    <button class="btn btn-danger" onclick="@TurnOff">Turn Off</button>
+</div>
+
+@functions {
+    bool shouldRender = true;
+    int count = 0;
+
+    void TurnOff()
+    {
+        shouldRender = false;
+    }
+
+    void TurnOn()
+    {
+        shouldRender = true;
+    }
+
+    void IncrementCounter()
+    {
+        count++;
+    }
+
+    protected override bool ShouldRender()
+    {
+        return shouldRender;
+    }
+}
